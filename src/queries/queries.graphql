@@ -1,0 +1,44 @@
+query getStreams {
+    activeUser {
+        projects {
+            items {
+                id
+                name
+                description
+                models {
+                    items {
+                        previewUrl
+                    }
+                    totalCount
+                }
+            }
+        }
+    }
+}
+
+
+query getUser {
+    activeUser {
+        id
+        email
+        name
+        bio
+        avatar
+    }
+}
+
+query getStream($projectId: String!){
+    stream(id: $projectId){
+        name
+        branches {
+            items {
+                name
+                commits{
+                    items {
+                        referencedObject
+                    }
+                }
+            }
+        }
+    }
+}
